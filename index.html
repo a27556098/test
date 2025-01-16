@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini-App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+            background-color: #f5f5f5;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcome">Loading...</h1>
+    <button onclick="Telegram.WebApp.close()">Close</button>
+    <script>
+        Telegram.WebApp.ready(); // Инициализация Web App
+        const user = Telegram.WebApp.initDataUnsafe?.user;
+
+        document.getElementById("welcome").innerText = user
+            ? `Hello, ${user.first_name}!`
+            : "Hello, Guest!";
+    </script>
+</body>
+</html>
